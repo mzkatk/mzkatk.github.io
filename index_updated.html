@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en" data-theme="0">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Zishan Khatib | Portfolio</title>
+<meta name="description" content="Zishan Khatib: data analyst and aspiring product and category manager. Skills, projects, experience and case studies.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✨</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,800&display=swap" rel="stylesheet">
+<style>
+  /* ------------ THEMES (the Shuffle colors button cycles these) ------------ */
+  :root {
+    --bg: #E6E9FF; --ink: #1A1A3D; --a: #FF5C8A; --b: #FFD23F; --c: #2EE6A6; --d: #FFFFFF;
+    --on: #1A1A3D;            /* text that sits on --a, --b, --c */
+    --line: var(--ink);
+    --font: "Bricolage Grotesque", "Trebuchet MS", system-ui, sans-serif;
+  }
+  [data-theme="1"] { --bg: #F0FFD1; --ink: #12301F; --a: #FF7A2F; --b: #B79CFF; --c: #FFE14D; --d: #FFFFFF; --on: #12301F; }
+  [data-theme="2"] { --bg: #FFD9EC; --ink: #3A0F2E; --a: #4C6BFF; --b: #FFEA5C; --c: #5CF2D0; --d: #FFFFFF; --on: #1A1A3D; }
+  [data-theme="3"] { --bg: #1B1740; --ink: #F4F0FF; --a: #FF5C8A; --b: #FFD23F; --c: #2EE6A6; --d: #2A2560; --on: #1A1A3D; --line: #F4F0FF; }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: var(--font); font-size: 18px; line-height: 1.55;
+    transition: background .35s, color .35s;
+  }
+  h1, h2, h3, p { margin: 0; }
+  a { color: inherit; }
+  :focus-visible { outline: 3px solid var(--a); outline-offset: 3px; }
+  .wrap { width: min(1080px, 100% - 32px); margin-inline: auto; }
+  section { padding: 88px 0 24px; scroll-margin-top: 70px; }
+  .lead { max-width: 56ch; margin-top: 12px; opacity: .85; }
+  h2 { font-size: clamp(2rem, 5vw, 3.2rem); line-height: 1.05; font-weight: 800; letter-spacing: -.02em; }
+
+  /* ------------ shared "sticker" look ------------ */
+  .pop-box {
+    background: var(--d); color: var(--ink);
+    border: 3px solid var(--line); border-radius: 18px;
+    box-shadow: 6px 6px 0 var(--line);
+  }
+  .btn {
+    font: inherit; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 12px 20px; border-radius: 999px; text-decoration: none;
+    background: var(--b); color: var(--on);
+    border: 3px solid var(--line); box-shadow: 4px 4px 0 var(--line);
+    transition: transform .12s, box-shadow .12s;
+  }
+  .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--line); }
+  .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--line); }
+  .btn.alt { background: var(--d); color: var(--ink); }
+
+  /* ------------ nav ------------ */
+  .nav {
+    position: sticky; top: 10px; z-index: 20; margin-top: 10px;
+    display: flex; align-items: center; gap: 6px; padding: 8px 10px;
+    background: var(--d); border: 3px solid var(--line); border-radius: 999px;
+    box-shadow: 4px 4px 0 var(--line);
+  }
+  .nav .logo { font-weight: 800; padding: 4px 12px; text-decoration: none; white-space: nowrap; }
+  .nav ul { display: flex; gap: 2px; list-style: none; margin: 0 0 0 auto; padding: 0; overflow-x: auto; scrollbar-width: none; }
+  .nav ul a { display: block; padding: 6px 12px; border-radius: 999px; text-decoration: none; font-size: 15px; font-weight: 600; white-space: nowrap; }
+  .nav ul a:hover { background: var(--b); color: var(--on); }
+  .shuffle { font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; padding: 6px 14px; border-radius: 999px; background: var(--a); color: var(--on); border: 3px solid var(--line); white-space: nowrap; }
+  .shuffle:hover { filter: brightness(1.08); }
+
+  /* ------------ hero ------------ */
+  .hero { padding-top: 56px; display: grid; grid-template-columns: 1.1fr .9fr; gap: 32px; align-items: center; }
+  .hero h1 { font-size: clamp(2.6rem, 7vw, 5rem); line-height: .98; font-weight: 800; letter-spacing: -.03em; }
+  .hero p { margin-top: 20px; max-width: 46ch; font-size: 1.1rem; }
+  .hero .actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+  .stage {
+    position: relative; min-height: 400px;
+    border: 3px dashed var(--line); border-radius: 28px;
+    touch-action: none; overflow: hidden;
+  }
+  .stage .hint { position: absolute; inset: auto 0 12px 0; text-align: center; font-size: 14px; opacity: .65; pointer-events: none; }
+  .sticker {
+    position: absolute; padding: 10px 16px; border-radius: 14px; font-weight: 800; font-size: 1.05rem;
+    border: 3px solid var(--line); box-shadow: 4px 4px 0 var(--line);
+    transform: rotate(var(--r, 0deg)); cursor: grab; user-select: none; touch-action: none;
+    color: var(--on); transition: transform .15s, box-shadow .15s;
+  }
+  .sticker.held { cursor: grabbing; transform: rotate(0deg) scale(1.08); box-shadow: 8px 8px 0 var(--line); z-index: 5; }
+  .sticker.s1 { background: var(--b); }
+  .sticker.s2 { background: var(--a); }
+  .sticker.s3 { background: var(--c); }
+  .sticker.s4 { background: var(--d); color: var(--ink); }
+  .sticker.s5 { background: var(--b); }
+
+  /* ------------ skills ------------ */
+  .skill-groups { display: grid; gap: 22px; margin-top: 32px; }
+  .skill-group h3 { font-size: 1.1rem; margin-bottom: 10px; }
+  .bubbles { display: flex; flex-wrap: wrap; gap: 10px; }
+  .skill {
+    font: inherit; font-weight: 600; cursor: pointer; padding: 8px 18px; border-radius: 999px;
+    background: var(--d); color: var(--ink); border: 3px solid var(--line);
+    transition: transform .12s, background .12s;
+  }
+  .skill:hover { transform: translateY(-3px) rotate(-2deg); background: var(--b); color: var(--on); }
+  .skill[aria-pressed="true"] { background: var(--a); color: var(--on); }
+  .skill.wiggle { animation: wiggle .4s; }
+  @keyframes wiggle { 25% { transform: rotate(-6deg) scale(1.08); } 75% { transform: rotate(6deg) scale(1.08); } }
+  .skill-note { margin-top: 26px; padding: 18px 22px; min-height: 64px; }
+
+  /* ------------ projects (flip cards) ------------ */
+  .projects { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 28px; margin-top: 36px; }
+  .proj { perspective: 1000px; min-height: 340px; }
+  .proj-inner { position: relative; width: 100%; height: 100%; min-height: 340px; transition: transform .6s; transform-style: preserve-3d; }
+  .proj.flipped .proj-inner { transform: rotateY(180deg); }
+  .face {
+    position: absolute; inset: 0; padding: 22px; display: flex; flex-direction: column; gap: 10px;
+    backface-visibility: hidden; -webkit-backface-visibility: hidden;
+    border: 3px solid var(--line); border-radius: 18px; box-shadow: 6px 6px 0 var(--line); color: var(--on);
+  }
+  .face.back { transform: rotateY(180deg); background: var(--d); color: var(--ink); }
+  .proj:nth-child(3n+1) .front { background: var(--a); }
+  .proj:nth-child(3n+2) .front { background: var(--b); }
+  .proj:nth-child(3n+3) .front { background: var(--c); }
+  .face .big { font-size: 3rem; line-height: 1; }
+  .face h3 { font-size: 1.5rem; line-height: 1.1; }
+  .face .tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
+  .tag { font-size: 13px; font-weight: 600; padding: 2px 10px; border-radius: 999px; border: 2px solid currentColor; }
+  .flip-btn { font: inherit; font-size: 14px; font-weight: 600; align-self: flex-start; cursor: pointer; padding: 6px 14px; border-radius: 999px; background: var(--d); color: var(--ink); border: 3px solid var(--line); }
+  .flip-btn:hover { background: var(--ink); color: var(--d); }
+  .links { display: flex; gap: 14px; flex-wrap: wrap; font-weight: 600; }
+  .face.back p { font-size: 16px; }
+
+  /* ------------ experience timeline ------------ */
+  .timeline { list-style: none; margin: 40px 0 0; padding: 0 0 0 34px; position: relative; display: grid; gap: 28px; }
+  .timeline::before { content: ""; position: absolute; left: 9px; top: 6px; bottom: 6px; border-left: 4px dotted var(--line); }
+  .job { position: relative; padding: 20px 24px; }
+  .job::before {
+    content: ""; position: absolute; left: -34px; top: 22px; width: 22px; height: 22px; border-radius: 50%;
+    background: var(--a); border: 3px solid var(--line);
+  }
+  .job:nth-child(2)::before { background: var(--b); }
+  .job:nth-child(3)::before { background: var(--c); }
+  .job:nth-child(4)::before { background: var(--d); }
+  .job .when { font-size: 14px; font-weight: 600; opacity: .7; }
+  .job h3 { font-size: 1.35rem; line-height: 1.2; margin-top: 2px; }
+  .job ul { margin: 10px 0 0; padding-left: 20px; }
+  .job li + li { margin-top: 4px; }
+
+  /* ------------ case studies ------------ */
+  .cases { display: grid; gap: 22px; margin-top: 36px; }
+  details.case { overflow: hidden; }
+  details.case summary {
+    list-style: none; cursor: pointer; padding: 20px 24px; display: grid; gap: 6px; position: relative; padding-right: 70px;
+  }
+  details.case summary::-webkit-details-marker { display: none; }
+  details.case summary::after {
+    content: "+"; position: absolute; right: 20px; top: 50%; translate: 0 -50%;
+    width: 38px; height: 38px; border-radius: 50%; display: grid; place-items: center;
+    font-size: 1.5rem; font-weight: 800; background: var(--b); color: var(--on); border: 3px solid var(--line);
+    transition: rotate .25s;
+  }
+  details.case[open] summary::after { rotate: 135deg; background: var(--a); }
+  details.case summary h3 { font-size: 1.4rem; line-height: 1.15; }
+  details.case summary p { opacity: .8; }
+  .case-body { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 0 24px 24px; }
+  .case-body > div { padding: 16px; border: 3px solid var(--line); border-radius: 14px; }
+  .case-body > div:nth-child(1) { background: var(--a); color: var(--on); }
+  .case-body > div:nth-child(2) { background: var(--b); color: var(--on); }
+  .case-body > div:nth-child(3) { background: var(--c); color: var(--on); }
+  .case-body h4 { margin: 0 0 6px; font-size: 1.05rem; }
+  .case-body p { font-size: 16px; }
+  .case-body p + p { margin-top: 8px; }
+  .case-soon { padding: 0 24px 24px; }
+
+  /* ------------ contact ------------ */
+  .contact { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 32px; align-items: start; }
+  .contact-card { padding: 26px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 18px; }
+  .chip { font: inherit; font-size: 15px; font-weight: 600; cursor: pointer; padding: 6px 14px; border-radius: 999px; background: var(--bg); color: var(--ink); border: 3px solid var(--line); }
+  .chip[aria-pressed="true"] { background: var(--c); color: var(--on); }
+  label { display: block; font-weight: 600; margin-top: 12px; }
+  input, textarea {
+    width: 100%; margin-top: 6px; font: inherit; padding: 10px 14px; border-radius: 12px;
+    background: var(--bg); color: var(--ink); border: 3px solid var(--line);
+  }
+  textarea { min-height: 120px; resize: vertical; }
+  .contact-card .btn { margin-top: 18px; }
+  .social { list-style: none; padding: 0; margin: 18px 0 0; display: grid; gap: 8px; font-weight: 600; }
+  .small { font-size: 14px; opacity: .7; margin-top: 10px; }
+  .bits { position: fixed; pointer-events: none; z-index: 100; width: 10px; height: 10px; border-radius: 3px; }
+
+  footer { padding: 70px 0 40px; text-align: center; font-size: 15px; opacity: .8; }
+
+  /* ------------ small screens ------------ */
+  @media (max-width: 820px) {
+    body { font-size: 17px; }
+    .hero, .contact { grid-template-columns: 1fr; }
+    .stage { min-height: 360px; }
+    .case-body { grid-template-columns: 1fr; }
+    .nav ul { display: none; }
+    .nav { justify-content: space-between; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after { transition: none !important; animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <!-- ===== NAV ===== -->
+  <nav class="nav" aria-label="Main">
+    <a class="logo" href="#top">Zishan Khatib</a>
+    <ul>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#case-studies">Case studies</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="shuffle" id="shuffle" type="button">Shuffle colors</button>
+  </nav>
+
+  <main id="top">
+    <!-- ===== INTRO ===== -->
+    <section class="hero" aria-labelledby="hello">
+      <div>
+        <h1 id="hello">Hi, I'm Zishan. I turn data into product decisions.</h1>
+        <p>I'm an IIT Bombay chemical engineering graduate working as a data analyst, and I'm moving into product and category management. I like finding the few things that drive most of the results, then helping teams act on them. I've also built OfferWorth, a tool that scores your resume against a job description.</p>
+        <div class="actions">
+          <a class="btn" href="#projects">See my work</a>
+          <a class="btn alt" href="#contact">Say hi</a>
+        </div>
+      </div>
+      <div class="stage" id="stage" aria-label="Playground of draggable stickers">
+        <!-- Drag the stickers with mouse, finger or arrow keys -->
+        <div class="sticker s1" tabindex="0" style="left:6%; top:8%; --r:-6deg">80/20 is my love language</div>
+        <div class="sticker s2" tabindex="0" style="left:40%; top:22%; --r:5deg">Nextleap fellow from 5 Dec</div>
+        <div class="sticker s3" tabindex="0" style="left:8%; top:44%; --r:4deg">Chem engineer turned analyst</div>
+        <div class="sticker s4" tabindex="0" style="left:46%; top:58%; --r:-4deg">Built OfferWorth</div>
+        <div class="sticker s5" tabindex="0" style="left:10%; top:72%; --r:-3deg">SQL before coffee</div>
+        <p class="hint">Go on, drag the stickers around</p>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS ===== -->
+    <section id="skills" aria-labelledby="skills-h">
+      <h2 id="skills-h">Skills</h2>
+      <p class="lead">Tap any skill to see where I've used it.</p>
+      <div class="skill-groups">
+        <div class="skill-group">
+          <h3>Data and tools</h3>
+          <div class="bubbles">
+            <button class="skill" type="button" aria-pressed="false" data-note="SQL (PostgreSQL): CTEs, window functions, joins and subqueries. I used them to rebuild 228K subscription lifecycle records and analyse about 1M retail transactions.">SQL</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Python (Pandas, Matplotlib): cleaning data and building charts that non-technical stakeholders can read at a glance.">Python</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Excel: pivot tables, VLOOKUP, XLOOKUP and the daily performance reports I ran across 54 blocks at Jan Suraaj.">Excel</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Tableau: turning analysis into dashboards people can explore on their own.">Tableau</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Git: version control for my analytics projects, all on GitHub.">Git</button>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Category and product thinking</h3>
+          <div class="bubbles">
+            <button class="skill" type="button" aria-pressed="false" data-note="Pareto analysis: found that 21% of SKUs and 23% of customers drive 80% of revenue in a retail dataset.">Pareto analysis</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="SKU rationalization: using revenue concentration to decide what to keep, push or cut.">SKU rationalization</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Cohort and retention analysis: showed where high-value customers concentrate in a SaaS subscription base.">Cohort and retention</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Funnel analysis: finding where people drop off between one step and the next.">Funnel analysis</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Market and competitor research: at AutoLoggic I studied competitor offerings and customer pain points to sharpen positioning.">Competitor research</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Seasonality: MoM and YoY trends that fed inventory planning recommendations.">MoM and YoY trends</button>
+          </div>
+        </div>
+        <div class="skill-group">
+          <h3>Field and people skills</h3>
+          <div class="bubbles">
+            <button class="skill" type="button" aria-pressed="false" data-note="Stakeholder reporting: daily MIS reports to a State Lead, plus conversations with district leaders, Zila Parishad members and Mukhiyas.">Stakeholder reporting</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Feedback analysis: collecting citizen responses, spotting repeat issues and turning them into recommendations.">Feedback analysis</button>
+            <button class="skill" type="button" aria-pressed="false" data-note="Team management: tracked 27 Local Program Representatives against daily targets.">Managing teams</button>
+          </div>
+        </div>
+      </div>
+      <div class="skill-note pop-box" id="skill-note" aria-live="polite">Pick a skill above and I'll tell you where I've used it.</div>
+    </section>
+
+    <!-- ===== PROJECTS ===== -->
+    <section id="projects" aria-labelledby="projects-h">
+      <h2 id="projects-h">Projects</h2>
+      <p class="lead">Flip a card to see what's behind it.</p>
+      <div class="projects">
+        <div class="proj">
+          <div class="proj-inner">
+            <div class="face front">
+              <div class="big" aria-hidden="true">🎯</div>
+              <h3>OfferWorth</h3>
+              <p>Upload your resume, match it against a job description and see how well you fit.</p>
+              <div class="tags"><span class="tag">Resume match</span><span class="tag">Job seekers</span></div>
+              <button class="flip-btn" type="button" aria-label="Flip OfferWorth to read details">Flip it</button>
+            </div>
+            <div class="face back" inert>
+              <h3>OfferWorth</h3>
+              <p>A website for job seekers. Upload your resume, pick the role or paste the job description you're targeting, and get a match score so you know what to fix before you apply.</p>
+              <div class="links"><a href="#" target="_blank" rel="noopener">Try OfferWorth</a></div>
+              <button class="flip-btn" type="button" aria-label="Flip OfferWorth back">Flip back</button>
+            </div>
+          </div>
+        </div>
+        <div class="proj">
+          <div class="proj-inner">
+            <div class="face front">
+              <div class="big" aria-hidden="true">🍾</div>
+              <h3>Siplo</h3>
+              <p>An AdTech startup I co-founded at IIT Bombay, and the lessons from shutting it down.</p>
+              <div class="tags"><span class="tag">AdTech</span><span class="tag">Sponsorships</span></div>
+              <button class="flip-btn" type="button" aria-label="Flip Siplo to read details">Flip it</button>
+            </div>
+            <div class="face back" inert>
+              <h3>Siplo</h3>
+              <p>Built a pipeline of 20+ event organizers and wrote a 10,000+ bottle sponsorship proposal for a leading real estate conglomerate, which reached partnership talks. After a 3-week fundraising sprint, the numbers told us to stop, so we shut it down.</p>
+              <button class="flip-btn" type="button" aria-label="Flip Siplo back">Flip back</button>
+            </div>
+          </div>
+        </div>
+        <div class="proj">
+          <div class="proj-inner">
+            <div class="face front">
+              <div class="big" aria-hidden="true">🛰️</div>
+              <h3>Next up</h3>
+              <p>New product case studies are on the way.</p>
+              <div class="tags"><span class="tag">Nextleap</span><span class="tag">Product</span></div>
+              <button class="flip-btn" type="button" aria-label="Flip Next up to read details">Flip it</button>
+            </div>
+            <div class="face back" inert>
+              <h3>Next up</h3>
+              <p>I'm joining the Nextleap fellowship on 5 December. Every case study I complete there will land on this page, so check back.</p>
+              <button class="flip-btn" type="button" aria-label="Flip Next up back">Flip back</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== EXPERIENCE ===== -->
+    <section id="experience" aria-labelledby="exp-h">
+      <h2 id="exp-h">Past experience</h2>
+      <p class="lead">From field operations to startups, newest first.</p>
+      <ul class="timeline">
+        <li class="job pop-box">
+          <div class="when">Aug 2026 to Oct 2026</div>
+          <h3>Senior Fellow at Jan Suraaj Young Leaders Programme, Bihar</h3>
+          <ul>
+            <li>Managed 27 Local Program Representatives across 54 blocks in the Tirhut region, tracking daily targets and execution.</li>
+            <li>Consolidated daily performance data for the State Lead and flagged gaps against targets.</li>
+            <li>Linked daily wages to individual target achievement, tying resources to measurable outcomes.</li>
+            <li>Analysed citizen and stakeholder feedback to find recurring issues and turn them into recommendations.</li>
+            <li>Worked with district leaders, Zila Parishad members, Mukhiyas and grassroots organisations, using structured data to plan programmes.</li>
+          </ul>
+        </li>
+        <li class="job pop-box">
+          <div class="when">Feb 2025 to Nov 2025</div>
+          <h3>Business and Growth Associate at AutoLoggic (AI automation startup)</h3>
+          <ul>
+            <li>Analysed target segments by industry, company size and use case, and built a pipeline of 100+ contacts.</li>
+            <li>Researched competitors and customer pain points to inform product positioning and go-to-market messaging.</li>
+            <li>Scored prospect fit across 100+ leads, which led to 2 client wins worth ₹4L+.</li>
+          </ul>
+        </li>
+        <li class="job pop-box">
+          <div class="when">Oct 2024 to Feb 2025</div>
+          <h3>Co-Founder at Siplo (AdTech startup, IIT Bombay)</h3>
+          <ul>
+            <li>Built a pipeline of 20+ event organizers and a 10,000+ bottle sponsorship proposal that reached partnership discussions.</li>
+            <li>Ran a 3-week fundraising sprint, tracked outreach against conversions, and made the data-backed call to wind down.</li>
+          </ul>
+        </li>
+        <li class="job pop-box">
+          <div class="when">May 2021 to Jul 2022</div>
+          <h3>Corporate Relations Coordinator at E-Cell IIT Bombay</h3>
+          <ul>
+            <li>Core team member for Eureka, Asia's largest business model competition, with 12,000+ entries and prize money worth ₹8M.</li>
+            <li>Built relationships with national media houses to maximise reach for Eureka and E-Summit.</li>
+            <li>Created the Startup Connect Program and acted as point of contact for 10+ startups.</li>
+          </ul>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== CASE STUDIES ===== -->
+    <section id="case-studies" aria-labelledby="cs-h">
+      <h2 id="cs-h">Case studies</h2>
+      <p class="lead">Selected work across commercial strategy, fundraising research and B2B growth. Open each case to explore the problem, approach and proposed business impact.</p>
+      <div class="cases">
+        <details class="case pop-box" open>
+          <summary>
+            <h3>How could TransitCo make every trip alert more reliable—and cheaper?</h3>
+            <p>WhatsApp Business Platform proposal covering channel strategy, fallback logic, solution architecture, pilot design and commercial modelling.</p>
+          </summary>
+          <div class="case-body">
+            <div>
+              <h4>The problem</h4>
+              <p>Push notifications can be blocked by app settings or battery restrictions, while SMS depends on telecom network availability. A missed trip alert can lead to driver waiting time, rider no-shows and avoidable support calls.</p>
+            </div>
+            <div>
+              <h4>The proposed approach</h4>
+              <p>Use WhatsApp as the primary channel for opted-in riders, trigger SMS if delivery is not confirmed within two minutes, and keep push running in parallel. Safety alerts go out across all channels. The proposal also maps trip moments to utility templates and outlines consent, webhook and orchestration requirements.</p>
+            </div>
+            <div>
+              <h4>Business case & validation</h4>
+              <p>The model estimates approximately ₹0.84 Cr lower monthly messaging spend and a further approximately ₹0.8 Cr in avoided support costs. These are illustrative estimates, not realised results. An eight-week, 50,000-rider A/B pilot is proposed to validate reach, calls, no-shows, opt-in and cost per delivered alert.</p>
+            </div>
+          </div>
+          <p class="case-soon"><strong>Deliverable:</strong> Commercial proposal and implementation roadmap for a January 2027 pilot. <span class="links"><a href="transitco-whatsapp-trip-alerts.pptx" target="_blank" rel="noopener">View proposal (PPTX)</a></span></p>
+        </details>
+        <details class="case pop-box">
+          <summary>
+            <h3>How do you turn a vague Founder’s Office brief into an executable growth plan?</h3>
+            <p>Brysk case study combining investor prioritisation, segment selection and a 90-day B2B demand-generation model.</p>
+          </summary>
+          <div class="case-body">
+            <div>
+              <h4>Fundraising strategy</h4>
+              <p>Prioritise investors by thesis fit (AI, computer vision, edge hardware and IoT), stage fit, geography (US, India and Canada) and relevant portfolio proof. The output is a ranked target list with personalised first-touch and follow-up outreach.</p>
+            </div>
+            <div>
+              <h4>Demand-generation wedge</h4>
+              <p>Focus on purpose-built student accommodation (PBSA) operators. The buyer is central operations or property leadership at multi-property operators. The value hypothesis is convenient on-site retail with less staffing and measurable shrinkage.</p>
+            </div>
+            <div>
+              <h4>Funnel & learning loop</h4>
+              <p>The planning model starts with 50 target operators and 500 outbound touches over 90 days, then hypothesises approximately 50 qualified conversations, 25 first meetings and 10 pilots. Conversion rates are assumptions to validate. Track where the funnel breaks and define in advance what would trigger a pivot in buyer, offer or channel.</p>
+            </div>
+          </div>
+          <p class="case-soon"><strong>Key takeaway:</strong> Research should change prioritisation, funnel maths should be treated as a hypothesis, and pivot criteria should be defined before they are needed. <span class="links"><a href="brysk-founders-office-case-study.pdf" target="_blank" rel="noopener">View case study (PDF)</a></span></p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h">Let's make something together</h2>
+      <p class="lead">Pick a reason, write a note and it opens in your email app, ready to send.</p>
+      <div class="contact">
+        <form class="contact-card pop-box" id="form">
+          <strong>What's this about?</strong>
+          <div class="chips" id="chips" role="group" aria-label="Topic">
+            <button class="chip" type="button" aria-pressed="true">Just saying hi</button>
+            <button class="chip" type="button" aria-pressed="false">A job</button>
+            <button class="chip" type="button" aria-pressed="false">A project</button>
+            <button class="chip" type="button" aria-pressed="false">Coffee chat</button>
+          </div>
+          <label for="name">Your name</label>
+          <input id="name" name="name" autocomplete="name" required>
+          <label for="msg">Your message</label>
+          <textarea id="msg" name="msg" required></textarea>
+          <button class="btn" type="submit">Send it</button>
+          <p class="small">No backend needed: this opens your email app with everything filled in.</p>
+        </form>
+        <div class="contact-card pop-box">
+          <strong>Or reach me directly</strong>
+          <p style="margin-top:10px"><a href="mailto:zikhatibw@gmail.com" id="email">zikhatibw@gmail.com</a></p>
+          <button class="btn" type="button" id="copy" style="margin-top:14px">Copy email</button>
+          <ul class="social">
+            <!-- EDIT: put your real LinkedIn and GitHub addresses here -->
+            <li><a href="https://www.linkedin.com/in/your-handle" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="https://github.com/your-handle" target="_blank" rel="noopener">GitHub</a></li>
+            <li><a href="resume.pdf" target="_blank" rel="noopener">Resume (PDF)</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>Made by hand by Zishan Khatib and hosted for free. Try the Shuffle colors button if you haven't.</footer>
+</div>
+
+<script>
+(function () {
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var root = document.documentElement;
+
+  /* ---------- color shuffle ---------- */
+  var themes = 4, current = 0;
+  try { current = parseInt(localStorage.getItem("theme"), 10) || 0; } catch (e) {}
+  root.dataset.theme = current;
+  document.getElementById("shuffle").addEventListener("click", function () {
+    current = (current + 1) % themes;
+    root.dataset.theme = current;
+    try { localStorage.setItem("theme", current); } catch (e) {}
+  });
+
+  /* ---------- draggable stickers (mouse, touch, arrow keys) ---------- */
+  var stage = document.getElementById("stage");
+  stage.querySelectorAll(".sticker").forEach(function (el) {
+    var sx, sy, ox, oy, dragging = false;
+    function place(x, y) {
+      x = Math.max(0, Math.min(x, stage.clientWidth - el.offsetWidth));
+      y = Math.max(0, Math.min(y, stage.clientHeight - el.offsetHeight));
+      el.style.left = x + "px"; el.style.top = y + "px";
+    }
+    el.addEventListener("pointerdown", function (e) {
+      dragging = true; el.setPointerCapture(e.pointerId);
+      sx = e.clientX; sy = e.clientY; ox = el.offsetLeft; oy = el.offsetTop;
+      el.classList.add("held");
+      stage.appendChild(el);               /* bring to front */
+    });
+    el.addEventListener("pointermove", function (e) {
+      if (dragging) place(ox + e.clientX - sx, oy + e.clientY - sy);
+    });
+    function drop() { dragging = false; el.classList.remove("held"); }
+    el.addEventListener("pointerup", drop);
+    el.addEventListener("pointercancel", drop);
+    el.addEventListener("keydown", function (e) {
+      var step = 16, d = { ArrowLeft: [-step, 0], ArrowRight: [step, 0], ArrowUp: [0, -step], ArrowDown: [0, step] }[e.key];
+      if (d) { e.preventDefault(); place(el.offsetLeft + d[0], el.offsetTop + d[1]); }
+    });
+  });
+
+  /* ---------- skills ---------- */
+  var note = document.getElementById("skill-note");
+  var skills = document.querySelectorAll(".skill");
+  skills.forEach(function (b) {
+    b.addEventListener("click", function () {
+      skills.forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+      b.setAttribute("aria-pressed", "true");
+      note.textContent = b.dataset.note;
+      b.classList.remove("wiggle"); void b.offsetWidth; b.classList.add("wiggle");
+    });
+  });
+
+  /* ---------- project flip cards ---------- */
+  document.querySelectorAll(".proj").forEach(function (card) {
+    var front = card.querySelector(".front"), back = card.querySelector(".back");
+    card.querySelectorAll(".flip-btn").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        var flipped = card.classList.toggle("flipped");
+        front.inert = flipped; back.inert = !flipped;
+        (flipped ? back : front).querySelector(".flip-btn").focus();
+      });
+    });
+  });
+
+  /* ---------- confetti ---------- */
+  function confetti(fromEl) {
+    if (reduce) return;
+    var r = fromEl.getBoundingClientRect();
+    var colors = ["#FF5C8A", "#FFD23F", "#2EE6A6", "#4C6BFF", "#FF7A2F"];
+    for (var i = 0; i < 28; i++) {
+      var s = document.createElement("span");
+      s.className = "bits";
+      s.style.left = (r.left + r.width / 2) + "px";
+      s.style.top = (r.top + r.height / 2) + "px";
+      s.style.background = colors[i % colors.length];
+      document.body.appendChild(s);
+      var a = Math.random() * Math.PI * 2, d = 60 + Math.random() * 110;
+      s.animate([
+        { transform: "translate(0,0) rotate(0)", opacity: 1 },
+        { transform: "translate(" + Math.cos(a) * d + "px," + (Math.sin(a) * d + 70) + "px) rotate(" + (Math.random() * 540) + "deg)", opacity: 0 }
+      ], { duration: 900 + Math.random() * 400, easing: "cubic-bezier(.2,.7,.3,1)" }).onfinish = (function (n) { return function () { n.remove(); }; })(s);
+    }
+  }
+
+  /* ---------- contact ---------- */
+  var email = document.getElementById("email").textContent;
+  var copyBtn = document.getElementById("copy");
+  copyBtn.addEventListener("click", function () {
+    function done() { copyBtn.textContent = "Copied!"; confetti(copyBtn); setTimeout(function () { copyBtn.textContent = "Copy email"; }, 1800); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(done, function () { copyBtn.textContent = "Press Ctrl+C on the address"; });
+    } else { copyBtn.textContent = "Select and copy the address"; }
+  });
+
+  var chips = document.querySelectorAll(".chip");
+  chips.forEach(function (c) {
+    c.addEventListener("click", function () {
+      chips.forEach(function (o) { o.setAttribute("aria-pressed", "false"); });
+      c.setAttribute("aria-pressed", "true");
+    });
+  });
+  document.getElementById("form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var topic = document.querySelector('.chip[aria-pressed="true"]').textContent;
+    var name = document.getElementById("name").value;
+    var msg = document.getElementById("msg").value;
+    var url = "mailto:" + email + "?subject=" + encodeURIComponent(topic + " (from " + name + ")") + "&body=" + encodeURIComponent(msg);
+    confetti(e.submitter || copyBtn);
+    window.location.href = url;
+  });
+})();
+</script>
+</body>
+</html>
